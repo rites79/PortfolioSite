@@ -38,7 +38,7 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href) => {
     const element = document.getElementById(href.substring(1));
     if (element) {
       const offsetTop = element.offsetTop - 80;
@@ -79,7 +79,7 @@ export default function Navigation() {
                 </button>
               ))}
             </div>
-
+            
             {/* Mobile Navigation */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
@@ -87,13 +87,13 @@ export default function Navigation() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent>
                 <nav className="flex flex-col space-y-4 mt-8">
                   {navLinks.map((link) => (
                     <button
                       key={link.href}
                       onClick={() => scrollToSection(link.href)}
-                      className={`text-left py-2 transition-colors ${
+                      className={`text-left text-lg transition-colors ${
                         activeSection === link.href.substring(1)
                           ? "text-accent"
                           : "text-foreground hover:text-accent"

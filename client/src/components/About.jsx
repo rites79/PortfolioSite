@@ -38,11 +38,11 @@ export default function About() {
           >
             <h3 className="text-2xl font-semibold mb-4">Hello! I'm {portfolioData.personal.name}</h3>
             <p className="text-muted-foreground mb-6">
-              I'm currently pursuing my Bachelor of Technology in Electrical and Electronics Engineering at IIIT Bhubaneswar with a CGPA of 8.10. My journey in technology began early, and I've consistently excelled academically, achieving 95.2% in CBSE Class 10 and 90% in Class 12.
+              {portfolioData.personal.summary}
             </p>
             
             <p className="text-muted-foreground mb-6">
-              My passion lies in embedded systems, power grid technologies, and research. I've worked on projects ranging from fault detection systems to efficient EV charging solutions, and I'm always eager to tackle new challenges in the field of engineering.
+              My passion lies in embedded systems, electrical engineering, and innovative technology solutions. I've worked on various projects and gained experience through internships, always eager to tackle new challenges in engineering.
             </p>
 
             {/* Education Timeline */}

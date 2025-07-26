@@ -12,16 +12,16 @@ Preferred communication style: Simple, everyday language.
 
 The application follows a modern full-stack architecture pattern with clear separation between frontend and backend concerns:
 
-**Frontend**: React-based single-page application with TypeScript
-**Backend**: Express.js server with TypeScript
-**Database**: PostgreSQL with Drizzle ORM
+**Frontend**: React-based single-page application with JavaScript (JSX)
+**Backend**: Express.js server with JavaScript
+**Database**: MongoDB with Mongoose ODM
 **Styling**: Tailwind CSS with shadcn/ui components
 **Build Tool**: Vite for frontend bundling
 
 ## Key Components
 
 ### Frontend Architecture
-- **React with TypeScript**: Type-safe component development
+- **React with JavaScript**: Modern component development using JSX
 - **Vite**: Fast development server and build tool
 - **Tailwind CSS**: Utility-first CSS framework for responsive design
 - **shadcn/ui**: Pre-built accessible component library
@@ -31,9 +31,9 @@ The application follows a modern full-stack architecture pattern with clear sepa
 
 ### Backend Architecture
 - **Express.js**: Web application framework
-- **TypeScript**: Type safety for server-side code
-- **Drizzle ORM**: Type-safe database operations
-- **PostgreSQL**: Relational database for data persistence
+- **JavaScript**: Modern ES6+ server-side code
+- **Mongoose ODM**: Document-based database operations
+- **MongoDB**: NoSQL document database for data persistence
 
 ### UI Components
 The application uses a comprehensive set of shadcn/ui components including:
@@ -43,16 +43,16 @@ The application uses a comprehensive set of shadcn/ui components including:
 - Responsive layout components
 
 ### Database Schema
-- **Users table**: Basic user management (currently unused in portfolio context)
-- **Contact Messages table**: Stores form submissions with name, email, message, and timestamp
-- **UUID primary keys**: Auto-generated unique identifiers
+- **Users collection**: Basic user management (currently unused in portfolio context)
+- **Contact Messages collection**: Stores form submissions with name, email, message, and timestamp
+- **MongoDB ObjectIds**: Auto-generated unique identifiers
 
 ## Data Flow
 
 1. **Static Portfolio Data**: Stored in `client/src/data/portfolio.ts` containing all personal information, education, projects, experience, skills, achievements, and leadership activities
 2. **Contact Form Submission**: 
    - User fills contact form → Frontend validation → API request to `/api/contact`
-   - Backend validates data using Zod schemas → Stores in database → Returns success response
+   - Backend validates data using Zod schemas → Stores in MongoDB → Returns success response
    - Frontend shows toast notification based on response
 3. **Resume Download**: Direct API endpoint `/api/resume/download` serves resume file
 4. **Message Retrieval**: Admin endpoint `/api/contact` to retrieve all contact messages
@@ -60,8 +60,8 @@ The application uses a comprehensive set of shadcn/ui components including:
 ## External Dependencies
 
 ### Database
-- **Neon Database**: Serverless PostgreSQL provider (`@neondatabase/serverless`)
-- **Drizzle Kit**: Database migration and schema management tool
+- **MongoDB Atlas**: Cloud-hosted MongoDB database service
+- **Mongoose**: MongoDB object modeling for Node.js
 
 ### UI and Styling
 - **Radix UI**: Accessible component primitives for complex UI components
@@ -74,14 +74,14 @@ The application uses a comprehensive set of shadcn/ui components including:
 - **ESBuild**: Fast JavaScript bundler for production builds
 
 ### Storage Strategy
-**PostgreSQL Database**: Fully integrated with Drizzle ORM using `DatabaseStorage` class for production-ready data persistence. Contact form submissions are stored in the database with proper schema validation.
+**MongoDB Database**: Fully integrated with Mongoose ODM using `DatabaseStorage` class for production-ready data persistence. Contact form submissions are stored in the MongoDB database with proper schema validation.
 
 ## Deployment Strategy
 
 ### Development
 - **Development Server**: Vite dev server with HMR (Hot Module Replacement)
-- **Backend Server**: Express server with TypeScript compilation via `tsx`
-- **Database**: Drizzle push commands for schema updates
+- **Backend Server**: Express server with JavaScript via Node.js
+- **Database**: MongoDB connection with Mongoose schema definitions
 
 ### Production Build
 - **Frontend Build**: Vite builds React app to `dist/public`
@@ -90,7 +90,7 @@ The application uses a comprehensive set of shadcn/ui components including:
 - **Database Migrations**: Drizzle migrations in `./migrations` directory
 
 ### Environment Configuration
-- Requires `DATABASE_URL` environment variable for PostgreSQL connection
+- Requires `MONGODB_URI` environment variable for MongoDB connection
 - Supports both development and production environments
 - Replit-specific optimizations for cloud development
 
@@ -98,11 +98,11 @@ The application uses a comprehensive set of shadcn/ui components including:
 
 1. **Monorepo Structure**: Frontend (`client/`), backend (`server/`), and shared code (`shared/`) in single repository for easier development and deployment
 
-2. **Type Safety**: Full TypeScript implementation across frontend, backend, and shared schemas ensures type safety throughout the application
+2. **Modern JavaScript**: ES6+ JavaScript implementation across frontend and backend with JSX for React components
 
 3. **Component-Based UI**: Modular React components for each portfolio section (Hero, About, Projects, etc.) promoting reusability and maintainability
 
-4. **Database-First Approach**: Drizzle ORM with PostgreSQL provides type-safe database operations and easy schema management
+4. **Document Database Approach**: Mongoose ODM with MongoDB provides flexible document-based data operations and schema validation
 
 5. **Responsive Design**: Mobile-first approach using Tailwind CSS ensures excellent user experience across all devices
 
@@ -115,3 +115,5 @@ The application uses a comprehensive set of shadcn/ui components including:
 - **January 26, 2025**: Created all missing component files (Navigation, About, Projects, Experience, Skills, Achievements, Leadership, Contact) to fix import errors
 - **January 26, 2025**: Complete portfolio website deployed with all sections functional including contact form and resume download
 - **January 26, 2025**: Integrated PostgreSQL database with Drizzle ORM for persistent contact form storage
+- **January 26, 2025**: Converted entire codebase from TypeScript to JavaScript (TSX to JSX)
+- **January 26, 2025**: Migrated from PostgreSQL to MongoDB with Mongoose ODM

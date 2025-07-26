@@ -3,7 +3,7 @@ import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 80;
@@ -62,7 +62,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            {portfolioData.personal.bio}
+            {portfolioData.personal.summary}
           </motion.p>
           
           <motion.div 
@@ -99,7 +99,7 @@ export default function Hero() {
               <i className="fas fa-envelope"></i>
             </a>
             <a 
-              href={portfolioData.personal.linkedin}
+              href="https://linkedin.com/in/riteshkumar"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors text-xl"
@@ -107,7 +107,7 @@ export default function Hero() {
               <i className="fab fa-linkedin"></i>
             </a>
             <a 
-              href={portfolioData.personal.github}
+              href="https://github.com/riteshkumar"
               target="_blank"
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-accent transition-colors text-xl"

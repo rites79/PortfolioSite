@@ -37,7 +37,7 @@ export default function Projects() {
               <Card className="bg-card border-border card-hover">
                 <CardContent className="p-6">
                   <img 
-                    src={projectImages[index]} 
+                    src={projectImages[index % projectImages.length]} 
                     alt={project.title}
                     className="w-full h-48 object-cover rounded-lg mb-4" 
                   />
@@ -63,16 +63,24 @@ export default function Projects() {
                     ))}
                   </div>
                   
-                  {project.status === "under-review" && (
-                    <div className="flex items-center text-yellow-500 text-sm mb-2">
-                      <i className="fas fa-clock mr-2"></i>
-                      <span>Under Review</span>
-                    </div>
-                  )}
+                  <div className="space-y-2 mb-4">
+                    {project.achievements.map((achievement, achIndex) => (
+                      <div key={achIndex} className="flex items-start">
+                        <i className="fas fa-check text-accent text-sm mr-2 mt-1"></i>
+                        <span className="text-sm text-muted-foreground">{achievement}</span>
+                      </div>
+                    ))}
+                  </div>
                   
-                  <Button variant="ghost" className="text-accent hover:text-white p-0">
-                    View Details <i className="fas fa-arrow-right ml-2"></i>
-                  </Button>
+                  {project.link && (
+                    <Button 
+                      variant="ghost" 
+                      className="text-accent hover:text-white p-0"
+                      onClick={() => window.open(project.link, '_blank')}
+                    >
+                      View Project <i className="fas fa-external-link-alt ml-2"></i>
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

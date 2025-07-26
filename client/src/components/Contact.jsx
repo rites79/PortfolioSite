@@ -10,14 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export default function Contact() {
-  const [formData, setFormData] = useState<ContactFormData>({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
@@ -25,8 +19,11 @@ export default function Contact() {
   const { toast } = useToast();
 
   const contactMutation = useMutation({
-    mutationFn: async (data: ContactFormData) => {
-      return await apiRequest("POST", "/api/contact", data);
+    mutationFn: async (data) => {
+      return await apiRequest("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
     },
     onSuccess: () => {
       toast({
@@ -70,7 +67,7 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -83,7 +80,7 @@ export default function Contact() {
     contactMutation.mutate(formData);
   };
 
-  const handleInputChange = (field: keyof ContactFormData, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -128,19 +125,6 @@ export default function Contact() {
               </div>
               
               <div className="flex items-center">
-                <i className="fas fa-phone text-accent text-xl mr-4"></i>
-                <div>
-                  <p className="font-semibold">Phone</p>
-                  <a 
-                    href={`tel:${portfolioData.personal.phone}`} 
-                    className="text-muted-foreground hover:text-accent transition-colors"
-                  >
-                    {portfolioData.personal.phone}
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-center">
                 <i className="fas fa-map-marker-alt text-accent text-xl mr-4"></i>
                 <div>
                   <p className="font-semibold">Location</p>
@@ -149,43 +133,15 @@ export default function Contact() {
               </div>
             </div>
             
-            <div className="flex space-x-4 mt-8">
-              <a 
-                href={portfolioData.personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-muted hover:bg-accent p-3 rounded-lg transition-colors"
-              >
-                <i className="fab fa-linkedin text-xl"></i>
-              </a>
-              <a 
-                href={portfolioData.personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-muted hover:bg-accent p-3 rounded-lg transition-colors"
-              >
-                <i className="fab fa-github text-xl"></i>
-              </a>
-              <a 
-                href={`mailto:${portfolioData.personal.email}`}
-                className="bg-muted hover:bg-accent p-3 rounded-lg transition-colors"
-              >
-                <i className="fas fa-envelope text-xl"></i>
-              </a>
-            </div>
-            
-            {/* Resume Download */}
-            <div className="mt-8">
-              <Button 
-                onClick={downloadResume}
-                className="btn-gradient px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center"
-              >
-                <i className="fas fa-download mr-2"></i>
-                Download Resume
-              </Button>
-            </div>
+            <Button 
+              onClick={downloadResume}
+              className="btn-gradient mt-8 px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              <i className="fas fa-download mr-2"></i>
+              Download Resume
+            </Button>
           </motion.div>
-
+          
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -194,61 +150,59 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <Card className="bg-card border-border">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold mb-6">Send Message</h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <CardContent className="p-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Name
-                    </Label>
+                    <Label htmlFor="name">Name</Label>
                     <Input
                       id="name"
                       type="text"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      placeholder="Your Name"
-                      required
-                      className="bg-muted border-border focus:border-accent"
+                      className="mt-1"
+                      placeholder="Your name"
                     />
                   </div>
                   
                   <div>
-                    <Label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </Label>
+                    <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="mt-1"
                       placeholder="your.email@example.com"
-                      required
-                      className="bg-muted border-border focus:border-accent"
                     />
                   </div>
                   
                   <div>
-                    <Label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Message
-                    </Label>
+                    <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      placeholder="Your message here..."
-                      required
-                      rows={5}
-                      className="bg-muted border-border focus:border-accent resize-none"
+                      className="mt-1 min-h-[120px]"
+                      placeholder="Your message..."
                     />
                   </div>
                   
                   <Button 
-                    type="submit"
+                    type="submit" 
                     disabled={contactMutation.isPending}
-                    className="w-full btn-gradient px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+                    className="w-full btn-gradient"
                   >
-                    {contactMutation.isPending ? "Sending..." : "Send Message"}
+                    {contactMutation.isPending ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin mr-2"></i>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-paper-plane mr-2"></i>
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
