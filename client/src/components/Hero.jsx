@@ -31,7 +31,7 @@ export default function Hero() {
             className="w-32 h-32 mx-auto rounded-full p-1 btn-gradient mb-6"
           >
             <img 
-              src="/attached_assets/my profile pic_1753542379569.jpg"
+              src="/my profile pic_1753542379569.jpg"
               alt="Ritesh Kumar - Professional Photo"
               className="w-full h-full rounded-full object-cover"
             />
@@ -99,7 +99,7 @@ export default function Hero() {
               <i className="fas fa-envelope"></i>
             </a>
             <a 
-              href="https://linkedin.com/in/riteshkumar"
+              href="https://www.linkedin.com/in/ritesh-kumar-42a560265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors text-xl"
@@ -107,7 +107,7 @@ export default function Hero() {
               <i className="fab fa-linkedin"></i>
             </a>
             <a 
-              href="https://github.com/riteshkumar"
+              href="https://github.com/rites79"
               target="_blank"
               rel="noopener noreferrer" 
               className="text-muted-foreground hover:text-accent transition-colors text-xl"
