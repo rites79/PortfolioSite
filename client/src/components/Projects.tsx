@@ -5,10 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const projectImages = [
-  "https://pixabay.com/get/ga49da7e9aae48ed71db93876727ca946615819d658fbeecd3036524da66889e590d9c2cb16f2ae55110b3ecdef682cf77cfb5cf56f1bed8b29e6818c1bbd2003_1280.jpg",
+  "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
   "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
-  "https://pixabay.com/get/g6e2d99fe349c3d513709c554a272bcdc4ef7187272692b559f98aab844f94c6e83485890e0bc414ffd095732fc1f8e02b0fda02359004db47f0ec5c53ed7af00_1280.jpg",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
 ];
 
 export default function Projects() {

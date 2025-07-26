@@ -23,14 +23,18 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          {/* Profile picture placeholder */}
+          {/* Profile picture */}
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-32 h-32 mx-auto rounded-full btn-gradient flex items-center justify-center mb-6"
+            className="w-32 h-32 mx-auto rounded-full p-1 btn-gradient mb-6"
           >
-            <i className="fas fa-user text-4xl text-white"></i>
+            <img 
+              src="/attached_assets/my profile pic_1753542379569.jpg"
+              alt="Ritesh Kumar - Professional Photo"
+              className="w-full h-full rounded-full object-cover"
+            />
           </motion.div>
           
           <motion.h1 
