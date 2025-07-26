@@ -1,0 +1,28 @@
+I have uploaded my resume. Please analyze all its sections and automatically create a creative, modern, and responsive portfolio website for me. The website should showcase my education, experience, projects, technical skills, achievements, and extracurricular activities in an engaging and organized way.
+
+**Portfolio Website Requirements:**
+
+- Use all relevant details from my resume to populate the following sections:
+  - Home: My name, a brief intro, and a profile picture placeholder.
+  - About: A concise personal bio, academic history, and highlights.
+  - Projects: Feature my key projects and research, with titles and descriptions.
+  - Experience: Internships, workshops, and key professional experiences.
+  - Skills: List technical and programming skills.
+  - Achievements: Awards, certifications, and special recognitions.
+  - Leadership & Activities: Societies, committees, and leadership roles.
+  - Contact: Section with a contact form (name, email, message), and links to my email, GitHub, and LinkedIn.
+  - Resume: Button to download my resume as a PDF.
+- The design must be visually appealing, responsive (look great on mobile and desktop), and easy to navigate.
+- Organize content to highlight my strengths and unique experiences.
+- Add icons or creative touches appropriate for a tech and engineering portfolio.
+- Use placeholders for profile and project images
+- (Optional): Suggest or generate sample color schemes and font pairings suitable for a modern portfolio.
+
+**Technical requirements and note:**
+
+- The content (headings, project cards, contact form, etc.) must be auto-filled from the uploaded resume’s details without me re-entering them.
+- Generate the full codebase using the MERN stack (MongoDB for form submissions, Express.js/Node.js for the backend, React.js for the frontend), or generate clean HTML, CSS, and JavaScript if the code should be framework-agnostic.
+- Organize your output into clear file/folder sections.
+
+**The goal:**  
+Build a unique, creative, and professional personal portfolio website that stands out for job and internship applications, starting from just the information in my resume.
