@@ -4,21 +4,26 @@ import { router } from './routes.js';
 import { registerVite } from './vite.js';
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = parseInt(process.env.PORT) || 5000;
 
-// Connect to MongoDB
-await connectDB();
+// Initialize the server
+async function startServer() {
+  // Connect to MongoDB
+  await connectDB();
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  // Middleware
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use(router);
+  // Routes
+  app.use(router);
 
-// Register Vite for development/production
-registerVite(app);
+  // Setup Vite for development/production
+  await registerVite(app);
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`[express] serving on port ${port}`);
-});
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`[express] serving on port ${port}`);
+  });
+}
+
+startServer().catch(console.error);
