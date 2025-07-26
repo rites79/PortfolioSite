@@ -1,8 +1,10 @@
 import express from 'express';
+import 'dotenv/config';
 import { connectDB } from './db.js';
 import { router } from './routes.js';
 import { registerVite } from './vite.js';
 
+// Initialize Express app
 const app = express();
 const port = parseInt(process.env.PORT) || 5000;
 
